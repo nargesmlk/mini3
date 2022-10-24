@@ -1,0 +1,10 @@
+
+body{
+    display:flex;
+}
+.header{
+    background-color:blue;
+    min-height:70px;
+    align-items:center;
+    justify-content:center;
+}
