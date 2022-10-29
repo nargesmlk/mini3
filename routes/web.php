@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\AdminPanel\DashboardController;
+use App\Http\Controllers\AdminPanel\CategoryController;
 
 
 
@@ -18,4 +19,12 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('welcome');
+});
+Route::prefix('admin')->namespace('AdminPanel')->group(function(){
+    Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
+
+    Route::prefix('category')->group(function(){
+        Route::get('/',[CategoryController::class,'index'])->name('admin.category');
+        Route::get('create',[CategoryController::class,'create'])->name('admin.category.create');
+    });
 });
